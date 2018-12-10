@@ -2,13 +2,16 @@ var express = require('express');
 var router = express.Router();
 let partidaModel = require('../../models/partida');
 
-router.get('/',(req,res)=>{
+router.get('/:tipo',(req,res)=>{
     partidaModel.getAll((err,rows) =>{
         console.log(err);
-        // res.render('partidas/main',{
-        //     arrPartidas: rows
-        // })
-        res.json(rows)
+        if (req.params.tipo === 'html') {
+            res.render('partidas/main',{
+                arrPartidas: rows
+            })
+        } else {
+            res.json(rows)
+        }
     });
 });
 
