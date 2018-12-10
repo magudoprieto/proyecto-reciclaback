@@ -1,7 +1,19 @@
+mixin filaUsuario(usuario)
+  tr
+    td= usuario.email
+    td= usuario.username
+    td= usuario.edad
+    td= usuario.municipio
+    td= usuario.provincia
+    td= usuario.codigo_postal
+    td= usuario.curso
+
+
+
 doctype html
 html
   head
-    title= title
+    title Información de Usuarios
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     block content
