@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const apiRouter = require('./routes/api');
+const cors = require('cors');
 
 let mysql = require('mysql');
 let connection = mysql.createConnection({
@@ -47,7 +48,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 app.use('/api',apiRouter);
-
+app.use(cors());
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
