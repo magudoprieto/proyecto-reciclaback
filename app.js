@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 let mysql = require('mysql');
 let connection = mysql.createConnection({
   host:'localhost',
@@ -15,8 +16,14 @@ let connection = mysql.createConnection({
 connection.connect((err)=>{
     if(err) return console.log(err.message);
     //ESTE ES EL ÚNICO LUGAR DONDE SE PUEDEN HACER QUERYS
+    connection.query('SELECT * FROM hijos',(err,rows)=>{
+      //console.log(rows);
+      });
+    
     console.log('conexión realizada con exito');
 });
+
+
     
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
