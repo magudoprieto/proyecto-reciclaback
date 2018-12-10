@@ -3,10 +3,25 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let mysql = require('mysql');
+let connection = mysql.createConnection({
+  host:'localhost',
+  user:'root',
+  password:'root',
+  database: 'proyecto_recicla',
+  port:8889
+  });
 
+connection.connect((err)=>{
+    if(err) return console.log(err.message);
+    //ESTE ES EL ÚNICO LUGAR DONDE SE PUEDEN HACER QUERYS
+    console.log('conexión realizada con exito');
+});
+    
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const db = require('./db');
 var app = express();
 
 // view engine setup
