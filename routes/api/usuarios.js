@@ -24,4 +24,13 @@ router.post('/json',(req,res)=>{
    
 });
 
+//aqui vamos a recoger los datos con los que el usuario ha intentado loguearse
+router.post('/json',(req,res)=>{
+    console.log(req.body);
+    usuarioModel.checkLogin(req.body,(err,result)=>{
+        if(err) return res.json({error: err.message})
+        console.log(result);
+    });
+});
+
 module.exports = router;
