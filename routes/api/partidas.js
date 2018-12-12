@@ -15,4 +15,10 @@ router.get('/:tipo',(req,res)=>{
     });
 });
 
+router.post('/enter',(req,res)=>{
+    partidaModel.insert(req.body,(err,result)=>{
+        console.log(req.body);
+    });
+});
+
 module.exports = router;

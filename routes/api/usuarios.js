@@ -16,7 +16,7 @@ router.get('/:tipo',(req,res)=>{
 });
 //aqui recogemos los datos que hemos enviado desde la parte front de angular
 router.post('/json',(req,res)=>{
-    console.log(req.body);
+    console.log("JSON", req.body);
     usuarioModel.insert(req.body,(err,result)=>{
         console.log(result);
         if(err) return res.json({error: err.message})
@@ -25,12 +25,28 @@ router.post('/json',(req,res)=>{
 });
 
 //aqui vamos a recoger los datos con los que el usuario ha intentado loguearse
-router.post('/json',(req,res)=>{
-    console.log(req.body);
-    usuarioModel.checkLogin(req.body,(err,result)=>{
-        if(err) return res.json({error: err.message})
-        console.log(result);
+router.post('/login',(req,res)=>{
+    console.log("LOGIN", req.body);
+    usuarioModel.checkLogin(req.body.usuario, req.body.contrasena,(err,result)=>{
+        if(err) {
+            return res.json({error: err.message})
+        }
+        //console.log(result);
+        
     });
 });
+
+router.get('/login',(req,res)=>{
+    console.log("LOGIN", req.body);
+    usuarioModel.checkLogin(req.body.usuario, req.body.contrasena,(err,result)=>{
+        if(err) {
+            return res.json({error: err.message})
+        }
+        //console.log(result);
+        
+    });
+});
+
+
 
 module.exports = router;

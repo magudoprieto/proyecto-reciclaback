@@ -18,11 +18,13 @@ exports.insert = ({ email, contrasena, nombre, edad, municipio, provincia, posta
         done(null, result)
     })
 }
-
-exports.checkLogin = (done) =>{
-    db.get().query('SELECT * FROM usuarios WHERE username=req.body AND password=req.body;',(err,rows)=>{
+//BIEN
+exports.checkLogin = (usuario, contrasena, done) =>{
+    db.get().query('SELECT * FROM usuarios WHERE usuarios.username=? AND usuarios.password=?;', [usuario, contrasena],(err,rows)=>{
         if(err) return done(err)
         done(null,rows)
+        console.log(rows);
+        
     })
    
 };
