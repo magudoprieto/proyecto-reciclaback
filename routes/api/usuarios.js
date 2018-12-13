@@ -33,7 +33,7 @@ router.post('/login',(req,res)=>{
         }
         console.log(result);
         if (result.length === 0) {
-            return res.json({error: 'No existe el usuaria'})
+            return res.json({error: 'Usuario o contraseña incorrectos'})
         } else {
             return res.json(result[0])
         }
