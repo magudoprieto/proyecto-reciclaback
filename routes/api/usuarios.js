@@ -31,18 +31,12 @@ router.post('/login',(req,res)=>{
         if(err) {
             return res.json({error: err.message})
         }
-        //console.log(result);
-        
-    });
-});
-
-router.get('/login',(req,res)=>{
-    console.log("LOGIN", req.body);
-    usuarioModel.checkLogin(req.body.usuario, req.body.contrasena,(err,result)=>{
-        if(err) {
-            return res.json({error: err.message})
+        console.log(result);
+        if (result.length === 0) {
+            return res.json({error: 'No existe el usuaria'})
+        } else {
+            return res.json(result[0])
         }
-        //console.log(result);
         
     });
 });
