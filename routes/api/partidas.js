@@ -17,7 +17,10 @@ router.get('/:tipo',(req,res)=>{
 
 router.post('/enter',(req,res)=>{
     partidaModel.insert(req.body,(err,result)=>{
-        console.log(req.body);
+        console.log(result);
+        if(err){
+            console.log(err.message);
+        }
     });
 });
 

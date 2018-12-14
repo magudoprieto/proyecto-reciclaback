@@ -11,8 +11,8 @@ db.get().query('SELECT u.username,g.nombre,ug.puntuacion,ug.fecha FROM juegan as
 };
 
 //INTENTAMOS INSERTAR PARTIDAS CON PUNTUACION
-exports.insert = ({ puntuacion, fecha, fk_hijos, fk_juegos }, done) => {
-    db.get().query('INSERT INTO juegan VALUES (null, ?, ?, ?, ?))', [puntuacion, Date.now(), fk_hijos, fk_juegos], (err, result) => {
+exports.insert = ({ puntos, id_usuario, id_juego }, done) => {
+    db.get().query('INSERT INTO juegan VALUES (null, ?, ?, ?, ?)', [puntos, Date.now(),id_usuario, id_juego], (err, result) => {
         if (err) return done(err, null)
         done(null, result)
     })
